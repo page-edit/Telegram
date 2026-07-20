@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content-Hub — Accès Telegram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --tg-blue:#2AABEE;
+    --tg-blue-dark:#229ED9;
+    --bg:#17181a;
+    --card:#1f2023;
+    --text:#ffffff;
+    --muted:#8a8d91;
+    --line:#2c2d30;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    font-family:'Roboto', sans-serif;
+    color:var(--text);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+  .card{
+    background:var(--card);
+    width:100%;
+    max-width:420px;
+    border-radius:20px;
+    padding:40px 28px 32px;
+    text-align:center;
+    border:1px solid var(--line);
+  }
+
+  .avatar{
+    width:110px; height:110px;
+    margin:0 auto 24px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--tg-blue), #1c8fd1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:46px;
+    font-weight:700;
+    border:3px solid var(--tg-blue);
+  }
+
+  h1{
+    font-size:26px;
+    font-weight:900;
+    letter-spacing:0.01em;
+    margin-bottom:10px;
+  }
+  .subscribers{
+    color:var(--muted);
+    font-size:15px;
+    margin-bottom:22px;
+  }
+
+  .hook{
+    font-size:17px;
+    font-weight:500;
+    margin-bottom:22px;
+    line-height:1.4;
+  }
+
+  .price-tag{
+    display:inline-block;
+    background:rgba(42,171,238,0.12);
+    color:var(--tg-blue);
+    font-size:15px;
+    font-weight:700;
+    padding:8px 18px;
+    border-radius:999px;
+    margin-bottom:26px;
+  }
+
+  .cta{
+    display:block;
+    width:100%;
+    background:var(--tg-blue);
+    color:#fff;
+    font-size:17px;
+    font-weight:700;
+    text-decoration:none;
+    padding:16px;
+    border-radius:999px;
+    transition:background 0.15s ease;
+  }
+  .cta:hover{ background:var(--tg-blue-dark); }
+  .cta:focus-visible{ outline:2px solid var(--tg-blue-dark); outline-offset:3px; }
+
+  .accordion{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+    background:var(--bg);
+    color:var(--text);
+    border:1px solid var(--line);
+    font-family:'Roboto', sans-serif;
+    font-size:15px;
+    font-weight:500;
+    padding:14px 18px;
+    border-radius:12px;
+    margin-bottom:14px;
+    cursor:pointer;
+  }
+  .accordion .chevron{
+    color:var(--muted);
+    transition:transform 0.2s ease;
+    flex-shrink:0;
+  }
+  .accordion[aria-expanded="true"] .chevron{
+    transform:rotate(180deg);
+  }
+
+  .cat-panel{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.25s ease;
+  }
+  .cat-panel.open{
+    max-height:400px;
+  }
+  .cat-list{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    padding:4px 2px 18px;
+    text-align:left;
+  }
+  .cat-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:14px;
+    color:var(--text);
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:9px 12px;
+  }
+
+  .footnote{
+    margin-top:20px;
+    font-size:14px;
+    color:var(--muted);
+    line-height:1.5;
+  }
+  .footnote strong{ color:var(--text); font-weight:700; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="avatar">C</div>
+    <h1>Content-Hub</h1>
+    <div class="subscribers">Canal Telegram privé</div>
+
+    <div class="hook">Accède à ma galerie complète 🔥</div>
+
+    <div class="price-tag">Accès à vie — 10 €</div>
+
+    <button type="button" class="accordion" id="catToggle" aria-expanded="false" aria-controls="catPanel">
+      <span>8 catégories</span>
+      <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="cat-panel" id="catPanel">
+      <div class="cat-list">
+        <div class="cat-item">Snowbunny Love</div>
+        <div class="cat-item">Latina Girls</div>
+        <div class="cat-item">Hentai Haven</div>
+        <div class="cat-item">Hijabi</div>
+        <div class="cat-item">Furry</div>
+        <div class="cat-item">Animation God</div>
+        <div class="cat-item">MILF</div>
+        <div class="cat-item">Black Queen</div>
+      </div>
+    </div>
+
+    <a class="cta" href="https://buy.stripe.com/3cI00i9yg5Vobkv9UOew80p">Rejoindre le canal</a>
+
+    <div class="footnote">Vous êtes invité au canal <strong>Content-Hub</strong>.<br>Cliquez ci-dessus pour rejoindre.</div>
+  </div>
+
+<script>
+  const toggle = document.getElementById('catToggle');
+  const panel = document.getElementById('catPanel');
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+</script>
+</body>
+</html>
